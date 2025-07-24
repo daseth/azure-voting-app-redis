@@ -4,7 +4,8 @@ services:
     image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
     container_name: azure-vote-back
     environment:
-      ALLOW_EMPTY_PASSWORD: "yes"
+      # ALLOW_EMPTY_PASSWORD: "yes"
+      REDIS_PASSWORD: "mypassword"
     ports:
         - "6379:6379"
 
@@ -14,5 +15,6 @@ services:
     container_name: azure-vote-front
     environment:
       REDIS: azure-vote-back
+      REDIS_PWD: "mypassword"
     ports:
         - "8080:80"
